@@ -17,8 +17,13 @@ class MyApp extends StatelessWidget {
 }
 
 class HomeBody extends StatelessWidget {
+
+  String _getData() {
+    return "567";
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Text(_getData());
   }
 }
