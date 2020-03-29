@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
 class HomeBody extends StatelessWidget {
 
   String _getData() {
-    return "567";
+    sleep(Duration(seconds: 5));
+    return "7689";
   }
 
   @override
