@@ -1,5 +1,6 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:dio/dio.dart';
+import 'package:flutterapp/service/http_request.dart';
 
 void main() => runApp(MyApp());
 
@@ -17,15 +18,29 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomeBody extends StatelessWidget {
+class HomeBody extends StatefulWidget {
+  @override
+  _HomeBodyState createState() => _HomeBodyState();
+}
 
-  String _getData() {
-    sleep(Duration(seconds: 5));
-    return "7689";
+class _HomeBodyState extends State<HomeBody> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    HttpRequest.request<dynamic>(
+        'https://httpbin.org/get',
+        params: {'name': 'dxz'},
+        inter: InterceptorsWrapper(onRequest: (options) => print('单次请求拦截')))
+        .then((res) {
+          print(res);
+        });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Text(_getData());
+    return Container();
   }
 }
+
