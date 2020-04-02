@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapp/widgets/dashed_line.dart';
 import 'package:flutterapp/widgets/douban_rating.dart';
 
 void main() => runApp(MyApp());
@@ -10,11 +11,28 @@ class MyApp extends StatelessWidget {
       title: 'TEST APP',
       home: Scaffold(
         appBar: AppBar(title: Text('title')),
-        body: Center(child: DouBanRating(rating: 7))
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                width: 200,
+                child: DouBanDashedLine(dashedWidth: 10)
+              ),
+              Container(
+                height: 200,
+                child: DouBanDashedLine(axis: Axis.vertical,dashedHeight: 10),
+              )
+            ],
+          ),
+        )
       )
     );
   }
 }
+
+
+
 
 
 
