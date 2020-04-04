@@ -9,6 +9,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'TEST APP',
       theme: ThemeData(
+        primaryColor: Colors.green,
+        splashColor: Colors.transparent,
         highlightColor: Colors.transparent
       ),
       home: MainPage()
