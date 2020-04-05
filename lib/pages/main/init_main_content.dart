@@ -13,8 +13,8 @@ List<MainBottomBarItem> items = [
 
 List<Widget> pages = [
 	HomePage(),
-	HomePage(),
 	GroupPage(),
-	HomePage(),
-	HomePage()
+	GroupPage(),
+	GroupPage(),
+	GroupPage()
 ];

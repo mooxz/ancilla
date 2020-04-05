@@ -1,4 +1,4 @@
 class HttpConfig {
-  static const String baseUrl = 'https://httpbin.org';
-  static const int timeout = 5000;
+  static const String BASE_URL = 'https://api.douban.com/v2';
+  static const int TIMEOUT = 5000;
 }

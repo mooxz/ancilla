@@ -4,7 +4,7 @@ import 'package:flutterapp/service/config.dart';
 
 class HttpRequest {
   /// global base request option
-  static final BaseOptions baseOptions = BaseOptions(baseUrl: HttpConfig.baseUrl, connectTimeout: HttpConfig.timeout);
+  static final BaseOptions baseOptions = BaseOptions(baseUrl: HttpConfig.BASE_URL, connectTimeout: HttpConfig.TIMEOUT);
   static final dio = new Dio(baseOptions);
 
   static Future<T> request<T>(String url, {String method = 'get', Map<String, dynamic> params, Interceptor inter}) async {
@@ -14,11 +14,11 @@ class HttpRequest {
     /// global interceptor
     Interceptor globalInter = InterceptorsWrapper(
       onRequest: (options) {
-        print('全局请求拦截');
+//        print('全局请求拦截');
         return options;
       },
       onResponse: (response) {
-        print('全局响应拦截');
+//        print('全局响应拦截');
         return response;
       },
       onError: (error) {
