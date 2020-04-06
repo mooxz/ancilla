@@ -1,3 +1,3 @@
 class HomeServiceConfig {
-	static const int MOVIE_COUNT = 0;
+	static const String MOVIE_URL = '/movie/top250';
 }
