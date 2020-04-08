@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapp/model/home_model.dart';
+import 'package:flutterapp/pages/home/home_body_content.dart';
 import 'package:flutterapp/service/home_service/home_service.dart';
 
 class HomeBody extends StatefulWidget {
@@ -31,7 +32,7 @@ class _HomeBodyState extends State<HomeBody> {
     return ListView.builder(
       itemCount: movies.length,
       itemBuilder: (ctx, index) {
-        return ListTile(title: Text('${movies[index].title}'));
+        return HomeBodyContent(movies[index]);
       }
     );
   }
