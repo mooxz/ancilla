@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapp/model/home_model.dart';
 import 'package:flutterapp/widgets/dashed_line.dart';
+import 'package:flutterapp/widgets/douban_rating.dart';
 
 class HomeBodyContent extends StatelessWidget {
   final HomeMovieTop250Model movie;
@@ -30,7 +31,7 @@ class HomeBodyContent extends StatelessWidget {
   Widget buildHeader() {
     return Container(
       padding: EdgeInsets.fromLTRB(4, 6, 4, 6),
-      margin: EdgeInsets.only(bottom: 8),
+      margin: EdgeInsets.only(bottom: 16),
       decoration: BoxDecoration(
         color: Color.fromARGB(255, 238, 205, 144),
         borderRadius: BorderRadius.circular(4)
@@ -67,7 +68,9 @@ class HomeBodyContent extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            contentInfoTitle()
+            contentInfoTitle(),
+            contentInfoRating(),
+            contentInfoBrief()
           ],
         ),
       ),
@@ -81,30 +84,46 @@ class HomeBodyContent extends StatelessWidget {
       children: <Widget>[
         Icon(Icons.play_circle_outline, color: Colors.redAccent,),
         Text(movie.title, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-        Text(movie.playDate)
+        Text(movie.playDate, style: TextStyle(fontSize: 14, color: Color.fromRGBO(0, 0, 0, 0.6)),)
       ],
     );
   }
 
   Widget contentInfoRating() {
     return Container(
-
+      margin: EdgeInsets.symmetric(vertical: 10),
+      child: Row(
+        children: <Widget>[
+          DouBanRating(rating: movie.rating, size: 18),
+          SizedBox(width: 8),
+          Text('${movie.rating}', style: TextStyle(fontSize: 14, color: Color.fromRGBO(0, 0, 0, 0.8)))
+        ],
+      ),
     );
   }
 
   Widget contentInfoBrief() {
-    return Container(
-
+    final String genres = movie.genres.join(' ');
+    final String director = movie.director.name;
+    String castNames = '';
+    for (final cast in movie.casts) {
+      castNames += cast.name + ' ';
+    }
+    return Text(
+      '$genres / $director / $castNames',
+      maxLines: 2,
+      overflow: TextOverflow.ellipsis,
+      style: TextStyle(fontSize: 16)
     );
   }
 
   Widget buildContentLine() {
     return Container(
-      height: 150,
+      height: 100,
       child: DouBanDashedLine(
         axis: Axis.vertical,
         dashedHeight: 6,
-        count: 12,
+        count: 8,
       ),
     );
   }
