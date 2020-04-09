@@ -18,7 +18,6 @@ class DouBanDashedLine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 200,
       child: Flex(
         direction: axis,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -27,7 +26,7 @@ class DouBanDashedLine extends StatelessWidget {
               width: dashedWidth,
               height: dashedHeight,
               child: DecoratedBox(
-                  decoration: BoxDecoration(color: Colors.red)
+                  decoration: BoxDecoration(color: color)
               )
           );
         }),

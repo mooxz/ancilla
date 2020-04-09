@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapp/model/home_model.dart';
+import 'package:flutterapp/widgets/dashed_line.dart';
 
 class HomeBodyContent extends StatelessWidget {
   final HomeMovieTop250Model movie;
@@ -41,23 +42,81 @@ class HomeBodyContent extends StatelessWidget {
   Widget buildContent() {
     return Container(
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text('data')
-        ],  
+          buildContentImg(),
+          buildContentInfo(),
+          buildContentLine(),
+          buildContentLike()
+        ],
       ),
     );
   }
 
   Widget buildContentImg() {
-    return Container();
+    return Container(
+      width: 100,
+      child: Image.network(movie.imageURL),
+    );
   }
 
   Widget buildContentInfo() {
-    return Container();
+    return Expanded(
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 8),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            contentInfoTitle()
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget contentInfoTitle() {
+    return Wrap(
+      crossAxisAlignment: WrapCrossAlignment.center,
+      spacing: 8,
+      children: <Widget>[
+        Icon(Icons.play_circle_outline, color: Colors.redAccent,),
+        Text(movie.title, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+        Text(movie.playDate)
+      ],
+    );
+  }
+
+  Widget contentInfoRating() {
+    return Container(
+
+    );
+  }
+
+  Widget contentInfoBrief() {
+    return Container(
+
+    );
+  }
+
+  Widget buildContentLine() {
+    return Container(
+      height: 150,
+      child: DouBanDashedLine(
+        axis: Axis.vertical,
+        dashedHeight: 6,
+        count: 12,
+      ),
+    );
   }
 
   Widget buildContentLike() {
-    return Container();
+    return Container(
+      child: Column(
+        children: <Widget>[
+          Text('想看', style: TextStyle(fontSize: 16, color: Color.fromARGB(255, 235, 170, 60)))
+        ]
+      ),
+    );
   }
   
   Widget buildBrief() {
