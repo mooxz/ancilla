@@ -78,14 +78,22 @@ class HomeBodyContent extends StatelessWidget {
   }
 
   Widget contentInfoTitle() {
+
+    List<Widget> infoList = [];
+
+    List<Widget> movieTitleList = movie.title.runes.map((rune) {
+      return Text(new String.fromCharCode(rune), style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, letterSpacing: -6));
+    }).toList();
+
+    infoList.addAll(movieTitleList);
+    infoList.insert(0, Icon(Icons.play_circle_outline, color: Colors.redAccent));
+    int listLength = infoList.length;
+    infoList.insert(listLength, Text(movie.playDate, style: TextStyle(fontSize: 14, color: Color.fromRGBO(0, 0, 0, 0.6))));
+
     return Wrap(
       crossAxisAlignment: WrapCrossAlignment.center,
       spacing: 8,
-      children: <Widget>[
-        Icon(Icons.play_circle_outline, color: Colors.redAccent,),
-        Text(movie.title, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-        Text(movie.playDate, style: TextStyle(fontSize: 14, color: Color.fromRGBO(0, 0, 0, 0.6)),)
-      ],
+      children: infoList
     );
   }
 
@@ -130,8 +138,12 @@ class HomeBodyContent extends StatelessWidget {
 
   Widget buildContentLike() {
     return Container(
+      height: 100,
+      padding: EdgeInsets.only(left: 24),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+          Icon(Icons.favorite, color: Color.fromARGB(255, 235, 170, 60), size: 30),
           Text('想看', style: TextStyle(fontSize: 16, color: Color.fromARGB(255, 235, 170, 60)))
         ]
       ),
